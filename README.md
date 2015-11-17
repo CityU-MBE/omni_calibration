@@ -1,4 +1,4 @@
-# Omnidirectional Calibration Toolbox
+# Omnidirectional Camera Calibration Toolbox
 
 This is a calibration toolbox for omnidirectional cameras which can be used with MATLAB.
 The most common omnidirectional camera models can be used for calibration and the toolbox has good corner extraction capabilities even for quite distorted omnidirectional images.
