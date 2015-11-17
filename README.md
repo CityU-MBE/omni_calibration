@@ -8,7 +8,7 @@ The toolbox is based on [LIBOMNICAL](http://www.cvlibs.net/projects/omnicam/) [1
 This toolbox fixes some bugs, adds some additional features and was mainly used and tested with the Mei model. 
 Therefore the other model implementations need probably some bug fixes too and everybody is welcome to contribute!
 
-The idea is to have a *general omnidirectional calibration toolbox* for all the common models and a platform for future model implementations.
+The idea is to have a *general omnidirectional camera calibration toolbox* for all the common models and a platform for future model implementations.
 
 
 ### Camera Models
@@ -24,32 +24,23 @@ This toolbox incorporates the following models:
 \* There may be some bugs with these models. Please help to improve this toolbox.
 
 
-### Reference Papers
+# Usage
 
-**[1]** Miriam Schoenbein and Tobias Strauss and Andreas Geiger, **Calibrating and Centering Quasi-Central Catadioptric Cameras**, *ICRA*, 2014
-
-**[2]** J. P. Barreto and H. Araujo, **Geometric properties of central catadioptric line images and their application in calibration**, *PAMI, vol. 27, no. 8, pp. 1327-1333*, 2005
-
-**[3]** D. Scaramuzza and A. Martinelli, **A toolbox for easily calibrating omnidirectional cameras**, *IROS*, 2006
-
-**[4]** C. Geyer and K. Daniilidis, **Paracatadioptric camera calibration**, *PAMI, vol. 24, no. 5, pp. 687-695*, 2002.
-
-
-# 1. Installation
+## 1. Installation
 
 1. Adapt the path in the file **_init.m_**
 2. Run `init` in MATLAB
 3. Run `make` (only necessary for models from [1])
 
 
-# 2. Calibration
+## 2. Calibration
 
 1. Adapt the configuration file **_config.m_**
 2. For calibration with new images: clear *grid.mat* and *images.mat* in the *data* directory
 3. Run `start_omnical` in the MATLAB command window and follow the instructions
 
 
-# 3. Output
+## 3. Output
 
 * Calibration parameters in: 
   - calib\_####.mat in *data/calibration_name*
@@ -65,7 +56,7 @@ This toolbox incorporates the following models:
         *data/\calibration\_name/Method\_\method/3D\_Checkerboards.png*
 
 
-# 4. Projection
+## 4. Projection
 
 Use the calibration to project a 3D world point to a 2D image point with *reprojection.m*: 
 
@@ -77,6 +68,27 @@ Use the calibration to project a 3D world point to a 2D image point with *reproj
 * `method`  - projection and calibration method
 * `cams`    - number for which cam the points are projected
 
+
+# References
+
+## Reference Papers
+
+**[1]** Miriam Schoenbein and Tobias Strauss and Andreas Geiger, **Calibrating and Centering Quasi-Central Catadioptric Cameras**, *ICRA*, 2014
+
+**[2]** J. P. Barreto and H. Araujo, **Geometric properties of central catadioptric line images and their application in calibration**, *PAMI, vol. 27, no. 8, pp. 1327-1333*, 2005
+
+**[3]** D. Scaramuzza and A. Martinelli, **A toolbox for easily calibrating omnidirectional cameras**, *IROS*, 2006
+
+**[4]** C. Geyer and K. Daniilidis, **Paracatadioptric camera calibration**, *PAMI, vol. 24, no. 5, pp. 687-695*, 2002.
+
+
+## Other Omnidirectional Camera Calibration Toolboxes
+
+- [LIBOMNICAL](http://www.cvlibs.net/projects/omnicam/)
+- [OCamCalib](https://sites.google.com/site/scarabotix/ocamcalib-toolbox)
+- [Omnidirectional Calibration Toolbox Mei](http://www.robots.ox.ac.uk/~cmei/Toolbox.html)
+- [Kalibr](https://github.com/ethz-asl/kalibr/)
+- [CamOdoCal](https://github.com/hengli/camodocal)
 
 # Licence
 
