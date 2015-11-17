@@ -1,6 +1,5 @@
 function sel = find_origin (p,cb,max_x,max_y,xc,yc) 
 
-
 p1 = p(cb(1,1),:);
 p2 = p(cb(1,max_x),:);
 p3 = p(cb(max_y,max_x),:);
@@ -158,6 +157,7 @@ for i=1:2
     end
 end
 
-return
+
+end
     
     

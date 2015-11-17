@@ -55,7 +55,7 @@ e = sqrt(a^2+b^2);
 p = b^2/(2*a);
 d = 2*e;
 
-for c = 1 : length(param.cam)
+for c = 1 : length(info.number_cameras)
     
     f = param.cam{c}.f;
 

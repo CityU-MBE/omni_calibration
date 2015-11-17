@@ -40,7 +40,7 @@ for c=1:calib_info.number_cameras
 
     for i = 1 : size(images{1,c}.image_numbers,2)
         
-        l = dir([fullfile(images{1,c}.path, images{1,c}.calib_name) '*.png']);
+        l = dir([fullfile(images{1,c}.path, images{1,c}.calib_name) strcat('*.',calib_info.format_image)]);
         img_name = [images{1,c}.path '/' l(images{1,c}.image_numbers(i)).name];
         
         if exist(img_name)

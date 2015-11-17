@@ -6,11 +6,13 @@ function [images, calib_info] = load_images(calib_sort, show_mosaic, load_image,
 
 format_image = calib_info.format_image;
 
+images = cell(1,calib_info.number_cameras);
+
 for cam = 1 : calib_info.number_cameras
 
     images{cam}.calib_name = eval(['calib_info.name_cam' sprintf(num2str(cam))]);
         
-    l = dir([fullfile(calib_info.image_path, images{cam}.calib_name) '*.png'])
+    l = dir([fullfile(calib_info.image_path, images{cam}.calib_name) strcat('*.',calib_info.format_image)]);
     image_numbers = [];
     if ( isempty(calib_info.ima_numbers) == 1)
         ima_nums = size(l,1);
@@ -60,10 +62,9 @@ for cam = 1 : calib_info.number_cameras
         images{1,cam}.I = I;
     end
     
-    images{1,cam}.active_images = ones(1,ima_nums);
-
     %%% By default, all the images are active for calibration:
     images{1,cam}.active_images = ones(1,ima_nums);
+    images{1,cam}.corner_found = ones(1,ima_nums);
     images{1,cam}.Imean = I_mean;
     
     images{1,cam}.image_numbers = image_numbers;
@@ -75,7 +76,7 @@ for cam = 1 : calib_info.number_cameras
     
 	% Show all the calibration images
     if ~isempty(I) && show_mosaic == 1
-        mosaic(image{1,cam});
+        mosaic(images{1,cam});
     end
     
 end

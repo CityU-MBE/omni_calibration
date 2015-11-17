@@ -1,8 +1,17 @@
+% Optimization using the Calibration Model of Mei
+
 function [x0, resnorm] = optimization_projection_mei (params, M, u_ini, active, images, options)
 
     [xx, active_vec] = pack_params_mei ( params, active);
     
-    [x0, resnorm, residual, exitflag, output] = lsqnonlin( @min_func_mei, xx, -inf, inf, options, params, M, active, active_vec, images, u_ini);
+    % define bounds
+    lower_bound = -inf*ones(size(xx));
+    upper_bound = inf*ones(size(xx));
+    % set bounds for parameter xi: 0 <= xi <= 1
+    lower_bound(1) = 0;
+    upper_bound(1) = 1;
+      
+    [x0, resnorm, residual, exitflag, output] = lsqnonlin( @min_func_mei, xx, lower_bound, upper_bound, options, params, M, active, active_vec, images, u_ini);
 
 end
 

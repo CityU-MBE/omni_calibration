@@ -133,6 +133,42 @@ elseif (info.method == 12) || (info.method == 16)
     [x0, resnorm] = optimization_projection_mei (params, M', u_ini, active, images, info.options);
     
     param = unpack_params_mei (x0, params, active);
+    
+    % display result
+    fprintf('\n******************************************************************************\n');
+    fprintf('**************************** Results   ******************************\n');
+    
+    time = datestr(now, 'dd-mm-HH-MM');
+    fileName = sprintf('Result_Mei_%s.txt', time);
+    filePath = sprintf('%s/%s', info.filename, fileName);
+    fileID = fopen(filePath, 'w');
+    
+    for c = params.calib
+    
+        fprintf('\n\n-- Camera %d --\n\n', c);
+        
+        fprintf('xi: [ %s]\n', sprintf('%f ', param.cam{c}.xi));
+        fprintf('gammac: [ %s]\n', sprintf('%f ', param.cam{c}.gammac));
+        fprintf('cc: [ %s]\n', sprintf('%f ', param.cam{c}.cc));
+        fprintf('kc: [ %s]\n', sprintf('%f ', param.cam{c}.kc));
+        fprintf('alphac: [ %s]\n', sprintf('%f ', param.cam{c}.alphac));
+        fprintf('ex_T: [ %s]\n', sprintf('%f ', param.cam{c}.ex_T));
+        fprintf('ex_om: [ %s]\n', sprintf('%f ', param.cam{c}.ex_om));
+        
+        % save to file
+        fprintf(fileID, '-- Camera %d --\n\n', c);
+        
+        fprintf(fileID, 'xi: [ %s]\n', sprintf('%f ', param.cam{c}.xi));
+        fprintf(fileID, 'gammac: [ %s]\n', sprintf('%f ', param.cam{c}.gammac));
+        fprintf(fileID, 'cc: [ %s]\n', sprintf('%f ', param.cam{c}.cc));
+        fprintf(fileID, 'kc: [ %s]\n', sprintf('%f ', param.cam{c}.kc));
+        fprintf(fileID, 'alphac: [ %s]\n', sprintf('%f ', param.cam{c}.alphac));
+        fprintf(fileID, 'ex_T: [ %s]\n', sprintf('%f ', param.cam{c}.ex_T));
+        fprintf(fileID, 'ex_om: [ %s]\n', sprintf('%f ', param.cam{c}.ex_om));
+        
+        fprintf('\nResults saved to file: %s \n', fileName)
+    
+    end
           
 end
   

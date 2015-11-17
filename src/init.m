@@ -1,7 +1,8 @@
 function opts = init()
 % returns root_dir, adds path if no output specified
 
-opts.root_dir = '<change_path_to_toolbox_folder>';
+% ADAPT PATH TO TOOLBOX
+opts.root_dir = '/home/jonas/git/thesis-jonas/Camera_Calibration/CalibrationToolbox';
 
 opts.opencv_lib_dir = '/usr/local/lib';
 opts.opencv_inc_dir = '';
